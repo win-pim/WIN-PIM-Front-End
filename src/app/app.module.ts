@@ -6,15 +6,19 @@ import {UserService} from './user-service.service';
 import {MessageService} from './message-service.service';
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import {FormsModule} from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatboxComponent
+    ChatboxComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     UserService,

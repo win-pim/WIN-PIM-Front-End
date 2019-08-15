@@ -34,10 +34,6 @@ export class ChatboxComponent implements OnInit{
   constructor(private chatService: ChatService) {
     this. message = ChatboxComponent.messageTemplate();
     this.messages = [];
-    this.chatService.messages.subscribe(msg => {
-      console.log('Response from websocket: ' + msg);
-      this.messages.unshift(msg);
-    });
   }
 
   ngOnInit(): void {
@@ -48,9 +44,13 @@ export class ChatboxComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log('new message from client to websocket: ', this.message);
-    this.chatService.messages.next(this.message);
+    console.log('new message from client to websocket: ', JSON.stringify(this.message));
     this.message = new Message();
     this.message.author = this.user1;
+
+    // @ts-ignore
+    this.chatService.messages.send("/ws/message", {}, JSON.stringify(
+      this.message
+    ));
   }
 }

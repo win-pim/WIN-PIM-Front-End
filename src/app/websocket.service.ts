@@ -8,10 +8,9 @@ import {environment} from '../environments/environment';
 })
 export class WebsocketService {
   // private socket;
-  private url;
+  private url = environment.testSocketIO + 'ws/message';
 
   constructor() {
-    this.url = environment.testSocketIO + 'ws/message';
   }
 
   private subject: Subject<MessageEvent>;

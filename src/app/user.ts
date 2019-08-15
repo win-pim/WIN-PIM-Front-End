@@ -1,6 +1,8 @@
 export class User {
-  name: string;
-  password: string;
-  channels: number[];
-  id: number;
+  // channels: number[];
+  // id: number;
+
+  constructor(private name: string, private pass: string) {
+
+  }
 }

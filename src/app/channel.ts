@@ -1,4 +1,5 @@
 export class Channel {
   name: string;
-  id: number;
+  description: string;
+  id: number = null;
 }
