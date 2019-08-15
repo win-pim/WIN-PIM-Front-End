@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channel.component.css']
 })
 export class ChannelComponent implements OnInit {
-
+  showFiller = false;
   constructor() { }
 
   ngOnInit() {
