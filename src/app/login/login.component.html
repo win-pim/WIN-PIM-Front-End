@@ -1,0 +1,25 @@
+<div style="text-align:center">
+<img width="500" alt="Angular Logo" src="assets/images/Logo.svg">
+</div>
+<div class="example-container" align="center" style="child-align: auto">
+  <div class="mat-input-element">
+    <mat-form-field >
+      <input matInput #input minlength="1" maxlength="32" placeholder="Username">
+      <mat-hint hidden align="center" hintLabel="Max 10 characters">{{input.value?.length || 0}}/32</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="mat-input-element">
+    <mat-form-field >
+      <input matInput #password minlength="8" placeholder="Password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint  align="center" hidden hintLabel="Max 10 characters">{{password.value?.length || 0}}/100</mat-hint>
+    </mat-form-field>
+    <br>
+  </div>
+    <div style=" display: inline; margin-top: 2em">
+    <button mat-button style="background-color: #8b1b36; color: white; width: 15vw" name="Submit" value="Login" type="Submit">Log in</button>
+    <button mat-button style="background-color: #fab90a; color: white; margin-left: 1em" name="Submit" value="SignUp" type="Submit">Sign Up</button>
+  </div>
+</div>

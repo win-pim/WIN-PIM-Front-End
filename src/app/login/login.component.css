@@ -1,0 +1,16 @@
+.example-container {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.mat-input-element {
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+mat-form-field{
+  width: 20vw;
+}
