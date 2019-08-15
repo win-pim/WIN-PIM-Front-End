@@ -1,0 +1,12 @@
+<div>
+  <div *ngFor='let message of messages'>
+    <h4>{{message.author.name}}</h4>
+    <p>{{message.body}}</p>
+  </div>
+</div>
+<div>
+  <form (ngSubmit)="onSubmit()" #messageForm>
+    <input type="text" [(ngModel)]="message.body" id="body" name="body" placeholder="What do you want to say?">
+    <button type="submit">Send</button>
+  </form>
+</div>
