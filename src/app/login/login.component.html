@@ -1,1 +1,18 @@
-<p>login works!</p>
+<!--<div class="login" align="center">-->
+  <!--<form>-->
+    <!--<input type="text" id="username" name="username" class="form-control"/> <br/>-->
+    <!--<input type="password" id="password" name="password" class="form-control"/> <br/>-->
+    <!--<button mat-button name="Submit" value="Login" type="Submit">Log in</button>-->
+    <!--<button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>-->
+  <!--</form>-->
+<!--</div>-->
+<div class="example-container" align="center">
+  <mat-form-field hintLabel="Max 10 characters">
+    <input matInput style="" #input maxlength="10" placeholder="Username">
+    <mat-hint align="center">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+<br>
+  <button mat-button style="margin-top: 30px" name="Submit" value="Login" type="Submit">Log in</button>
+  <button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>
+</div>
+
