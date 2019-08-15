@@ -28,6 +28,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -43,6 +45,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ChannelComponent
   ],
   imports: [
+    FormsModule,
+    // HttpClientModule,
+    // DemoMaterialModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -77,6 +84,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSortModule,
     MatPaginatorModule
   ],
+  exports: [ MatFormFieldModule],
   providers: [],
   bootstrap: [AppComponent]
 })

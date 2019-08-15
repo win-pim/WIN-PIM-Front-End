@@ -1,6 +1,10 @@
 .example-container {
   display: flex;
-  flex-direction: column;
+  align-content: center;
+}
+
+.mat-input-element {
+
 }
 
 .example-container > * {

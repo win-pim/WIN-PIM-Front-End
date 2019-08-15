@@ -6,13 +6,51 @@
     <!--<button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>-->
   <!--</form>-->
 <!--</div>-->
-<div class="example-container" align="center">
+<div class="example-container" align="center" style="child-align: auto">
+  <div class="mat-input-element">
   <mat-form-field hintLabel="Max 10 characters">
-    <input matInput style="" #input maxlength="10" placeholder="Username">
+    <input matInput #input maxlength="10" placeholder="Username">
     <mat-hint align="center">{{input.value?.length || 0}}/10</mat-hint>
   </mat-form-field>
-<br>
-  <button mat-button style="margin-top: 30px" name="Submit" value="Login" type="Submit">Log in</button>
-  <button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>
+  </div>
+  <div class="mat-input-element">
+    <mat-form-field hintLabel="Max 10 characters">
+      <input matInput #password maxlength="10" placeholder="Password">
+      <mat-hint align="center">{{password.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+    <br>
+    <button mat-button style="margin-top: 30px" name="Submit" value="Login" type="Submit">Log in</button>
+    <button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>
+  </div>
 </div>
+<!--<div class="mat-input-element">-->
+<!--<mat-form-field hintLabel="Max 10 characters">-->
+  <!--<mat-label></mat-label>-->
+  <!--<input matInput #password maxlength="10" placeholder="Password">-->
+  <!--<mat-hint align="center">{{password.value?.length || 0}}/10</mat-hint>-->
+<!--</mat-form-field>-->
+<!--<br>-->
+<!--<button mat-button style="margin-top: 30px" name="Submit" value="Login" type="Submit">Log in</button>-->
+<!--<button mat-button name="Submit" value="SignUp" type="Submit">Sign Up</button>-->
+<!--</div>-->
+<!--<mat-form-field-->
+  <!--[floatLabel]="options.value.floatLabel">-->
+  <!--<input matInput placeholder="Simple placeholder" required>-->
+<!--</mat-form-field>-->
+<!--<div class="example-container">-->
+  <!--<mat-form-field>-->
+    <!--<mat-label ></mat-label>-->
+    <!--<input matInput placeholder="Input">-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field>-->
+    <!--<textarea matInput placeholder="Textarea"></textarea>-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Select">-->
+      <!--<mat-option value="option">Option</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+<!--</div>-->
 
