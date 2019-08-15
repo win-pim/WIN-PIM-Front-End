@@ -1,24 +1,37 @@
 <div style="display: flex;justify-content: flex-end">
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+  <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548">
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+    # General</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+     # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
   </mat-drawer>
+  <div class="header" style="position: relative; top: 0; text-align: center; height: 10px">
+    <h2>header</h2>
+  </div>
   <div class="example-sidenav-content">
-    <div>
-Place holder for messages
+    <div style="width: 100%; height: 85%; margin-top: 0; background-color: lightgrey;overflow-y: scroll; position: center">
+      <p>Place holder for messages</p>
       </div>
     <div class="container " style="position: fixed;bottom: 0">
       <mat-form-field>
-        <textarea matInput placeholder="Textarea"></textarea>
+        <div style="position: relative; display: inline">
+          <button style="position: absolute; right: 10px " mat-button>Send</button>
+          <textarea matInput placeholder="Textarea"></textarea>
+        </div>
       </mat-form-field>
     </div>
   </div>
 </mat-drawer-container>
-<button type="button" mat-button (click)="drawer.toggle()" style="width: 2vw">
+<button type="button" mat-button (click)="drawer.toggle()">
   Toggle
 </button>
 </div>
