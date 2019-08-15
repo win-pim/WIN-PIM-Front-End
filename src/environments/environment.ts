@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   ws_url: 'ws://echo.websocket.org',
   apiUrl: 'http://localhost:8080',
-  testSocketIO: 'http://10.200.200.32:8080/'
+  testSocketIO: 'ws://10.200.200.32:8080/'
 };
 
 /*

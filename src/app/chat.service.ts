@@ -10,7 +10,7 @@ import {Message} from './message';
 })
 export class ChatService {
 
-  public messages: Subject<any>;
+  public messages: Subject<Message>;
 
   public izz: User = new User();
 
@@ -20,10 +20,13 @@ export class ChatService {
     this.messages = wsService
       .connect()
       .pipe(map(
-      (response: any): Message => {
-        const data = JSON.parse(response.text);
+      (response: MessageEvent): Message => {
+        const data = JSON.parse(response.data);
+        console.log(response);
         return {
-          channel: undefined, createdAt: undefined, id: 0, reactions: [],
+          channel: data.channel,
+          createdAt: data.createdAt,
+          reactions: data.reactions,
           author: data.author,
           body: data.body
         };

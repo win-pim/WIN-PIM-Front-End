@@ -3,6 +3,8 @@ import {WebsocketService} from '../websocket.service';
 import {ChatService} from '../chat.service';
 import {Message} from '../message';
 import {User} from '../user';
+import {Channel} from '../channel';
+import {Reaction} from '../reaction';
 
 @Component({
   selector: 'app-chatbox',
@@ -20,19 +22,29 @@ export class ChatboxComponent implements OnInit{
   messages: Message[];
   user1: User;
 
-  constructor(private chatService: ChatService) {
-    this.user1 = new User();
-    this.user1.name = 'IzzTheGreat';
-    this.message = new Message();
-    this.message.author = this.user1;
-    this.messages = [];
+  static messageTemplate() {
+   const newMessage = new Message();
+   newMessage.author = 1;
+   newMessage.channel = 1;
+   newMessage.reactions = [];
+   return newMessage;
   }
 
-  ngOnInit(): void {
+
+  constructor(private chatService: ChatService) {
+    this. message = ChatboxComponent.messageTemplate();
+    this.messages = [];
     this.chatService.messages.subscribe(msg => {
       console.log('Response from websocket: ' + msg);
       this.messages.unshift(msg);
     });
+  }
+
+  ngOnInit(): void {
+    // this.chatService.messages.subscribe(msg => {
+    //   console.log('Response from websocket: ' + msg);
+    //   this.messages.unshift(msg);
+    // });
   }
 
   onSubmit() {
