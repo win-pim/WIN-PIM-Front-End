@@ -8,17 +8,18 @@
     </button>
   </mat-drawer>
   <div class="example-sidenav-content">
+    <div>
 Place holder for messages
+      </div>
+    <div class="container " style="position: fixed;bottom: 0">
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea"></textarea>
+      </mat-form-field>
+    </div>
   </div>
-
 </mat-drawer-container>
-  <div class="container " align="center" style="display: unset !important;">
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-  </div>
-<button type="button" mat-button (click)="drawer.toggle()">
-  Toggle sidenav
+<button type="button" mat-button (click)="drawer.toggle()" style="width: 2vw">
+  Toggle
 </button>
 </div>
 
