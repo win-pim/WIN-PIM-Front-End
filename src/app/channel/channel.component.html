@@ -60,9 +60,11 @@
       <!--Add Channel</button>-->
   </mat-drawer>
   <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
-    <mat-button-toggle-group mat-icon-button class="material-icons" (click)="drawer.toggle()" style="z-index: 1; float: left; margin-top: 0; position: sticky; top: 0; left: 0" >
-      menu
-    </mat-button-toggle-group>
+    <button mat-button-toggle (click)="drawer.toggle(); toggle = !toggle"style="float: left; margin-top: 0; color: black; position: sticky; top: 0; left: 0" >
+      <mat-icon>
+        {{toggle ? 'arrow_forward' : 'arrow_back'}}
+      </mat-icon>
+    </button>
     <h2 style="top: 0; margin-top: 0">header</h2>
   </div>
   <div class="example-sidenav-content">
