@@ -28,6 +28,7 @@ export class ChannelComponent implements OnInit {
     // });
   }
 
+
   onSubmit() {
     console.log('new message from client to websocket: ', JSON.stringify(this.message));
     this.message = new Message();

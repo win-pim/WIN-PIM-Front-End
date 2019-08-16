@@ -1,8 +1,9 @@
 <div style="display: flex; justify-content: flex-end; position: relative">
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
-    <button mat-raised-button style="z-index: 1; width: inherit; background-color: #f3662a; color: white; position: sticky; top: 0; left: 0" >
-      Add Channel</button>
+    <button mat-icon-button class="material-icons" style="z-index: 1; position: sticky; top: 0; left: 0" >
+    <mat-icon>control_point</mat-icon>
+    </button>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
     # General</button>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
@@ -59,13 +60,9 @@
       <!--Add Channel</button>-->
   </mat-drawer>
   <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
-<!--    <button mat-raised-button (click)="drawer.toggle()" style="z-index: 1; width: 150px; float: left; margin-top: 0; background-color: #f3662a; color: white; position: sticky; top: 0; left: 0" >-->
-<!--      <mat-icon>arrow_back</mat-icon></button>-->
-    <button mat-button-toggle (click)="drawer.toggle(); toggle = !toggle" style="float: left; margin-top: 0; color: black; position: sticky; top: 0; left: 0" >
-      <mat-icon>
-        {{toggle ? 'arrow_forward' : 'arrow_back'}}
-      </mat-icon>
-    </button>
+    <mat-button-toggle-group mat-icon-button class="material-icons" (click)="drawer.toggle()" style="z-index: 1; float: left; margin-top: 0; position: sticky; top: 0; left: 0" >
+      menu
+    </mat-button-toggle-group>
     <h2 style="top: 0; margin-top: 0">header</h2>
   </div>
   <div class="example-sidenav-content">
