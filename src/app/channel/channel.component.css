@@ -33,3 +33,7 @@ mat-form-field{
 #btn-new-channel mat-icon {
   padding-bottom: 2px;
 }
+#newChannel {
+  display: flex;
+}
+
