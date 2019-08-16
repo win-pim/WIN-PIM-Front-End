@@ -30,6 +30,7 @@ export class ChatboxComponent implements OnInit {
     //   console.log('Response from websocket: ' + msg);
     //   this.messages.unshift(msg);
     // });
+    this.message = new Message();
   }
 
   onSubmit() {
