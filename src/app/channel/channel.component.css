@@ -23,3 +23,13 @@ mat-form-field{
   height: 100%;
   width: 100%;
 }
+
+#btn-new-channel {
+  background-color: #fab90a;
+  color: white;
+  z-index: 1;
+}
+
+#btn-new-channel mat-icon {
+  padding-bottom: 2px;
+}
