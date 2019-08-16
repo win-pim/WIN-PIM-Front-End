@@ -13,6 +13,7 @@ export class ChannelComponent implements OnInit {
   message: Message;
   messages: Message[];
   user1: User;
+  toggle: boolean;
 
 
 
