@@ -1,18 +1,74 @@
 <div style="display: flex; justify-content: flex-end; position: relative">
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
-    <button mat-icon-button id="btn-new-channel">
+    <button mat-icon-button class="material-icons" style="z-index: 1; position: sticky; top: 0; left: 0; width: 15%" >
       <mat-icon>control_point</mat-icon>
     </button>
+    <mat-form-field appearance="outline" style="padding: 0; width: 85%;">
+      <mat-label style="padding: 0; margin: 0;">New</mat-label>
+      <input matInput  style="padding: 0; margin: 0;">
+    </mat-form-field>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
     # General</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+     # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Random</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spring 2019</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Capstone Prod.</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Brain Trust</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+      # Spoilers</button>
     <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
       <!--Add Channel</button>-->
   </mat-drawer>
   <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
-    <mat-button-toggle-group mat-icon-button class="material-icons" (click)="drawer.toggle()" style="z-index: 1; float: left; margin-top: 0; position: sticky; top: 0; left: 0" >
-      menu
-    </mat-button-toggle-group>
+    <button mat-raised-button (click)="drawer.toggle(); toggle = !toggle" style="float: left; background-color: #f3662a; margin-top: 0; color: white; position: sticky; top: 0; left: 0" >
+      <mat-icon>
+        {{toggle ? 'arrow_forward' : 'arrow_back'}}
+      </mat-icon>
+    </button>
     <h2 style="top: 0; margin-top: 0">header</h2>
   </div>
   <div class="example-sidenav-content">
