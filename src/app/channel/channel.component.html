@@ -1,9 +1,13 @@
 <div style="display: flex; justify-content: flex-end; position: relative">
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
-    <button mat-icon-button class="material-icons" style="z-index: 1; position: sticky; top: 0; left: 0" >
-    <mat-icon>control_point</mat-icon>
+    <button mat-icon-button class="material-icons" style="z-index: 1; position: sticky; top: 0; left: 0; width: 15%" >
+      <mat-icon>control_point</mat-icon>
     </button>
+    <mat-form-field appearance="outline" style="padding: 0; width: 85%;">
+      <mat-label style="padding: 0; margin: 0;">New</mat-label>
+      <input matInput  style="padding: 0; margin: 0;">
+    </mat-form-field>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
     # General</button>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
