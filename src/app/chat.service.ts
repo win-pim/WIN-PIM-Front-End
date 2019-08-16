@@ -1,9 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
-import {WebsocketService} from './websocket.service';
-import {map} from 'rxjs/operators';
-import {User} from './user';
-import {Message} from './message';
 import * as Stomp from 'stompjs';
 
 @Injectable({
@@ -11,15 +6,13 @@ import * as Stomp from 'stompjs';
 })
 export class ChatService {
 
-  public messages: Stomp.Client;
-
-  public izz: User;
+  public ws: Stomp.Client;
 
   constructor() {
-    let s = new WebSocket('ws://localhost:8080/ws');
-    this.messages = Stomp.over(s);
-    this.messages.connect({}, frame => {
-      this.messages.subscribe('/message', console.log);
+    const socket = new WebSocket('ws://localhost:8080/ws');
+    this.ws = Stomp.over(socket);
+    this.ws.connect({}, frame => {
+      this.ws.subscribe('/message', console.log);
     });
   }
 }

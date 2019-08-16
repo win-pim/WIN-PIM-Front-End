@@ -63,9 +63,13 @@
   </div>
   <div class="example-sidenav-content">
     <div style="width: 100%; height: 85%; margin-top: 0; background-color: lightgrey;overflow-y: scroll; position: center">
-      <p>Place holder for messages</p>
+      <div *ngFor='let message of messages'>
+        <h4>{{message.author.name}}</h4>
+        <p>{{message.body}}</p>
       </div>
+    </div>
     <div class="container " style="position: fixed;bottom: 0">
+      <app-chatbox></app-chatbox>
       <mat-form-field>
         <div style="position: relative; display: inline">
           <button style="position: absolute; right: 10px " mat-button>Send</button>

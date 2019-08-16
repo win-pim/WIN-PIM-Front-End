@@ -3,8 +3,7 @@ import {WebsocketService} from '../websocket.service';
 import {ChatService} from '../chat.service';
 import {Message} from '../message';
 import {User} from '../user';
-import {Channel} from '../channel';
-import {Reaction} from '../reaction';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-chatbox',
@@ -16,23 +15,13 @@ import {Reaction} from '../reaction';
   ]
 })
 
-export class ChatboxComponent implements OnInit{
+export class ChatboxComponent implements OnInit {
 
   message: Message;
   messages: Message[];
   user1: User;
 
-  static messageTemplate() {
-   const newMessage = new Message();
-   newMessage.author = 1;
-   newMessage.channel = 1;
-   newMessage.reactions = [];
-   return newMessage;
-  }
-
-
-  constructor(private chatService: ChatService) {
-    this. message = ChatboxComponent.messageTemplate();
+  constructor(private chatService: ChatService, private http: HttpClient) {
     this.messages = [];
   }
 
@@ -49,7 +38,7 @@ export class ChatboxComponent implements OnInit{
     this.message.author = this.user1;
 
     // @ts-ignore
-    this.chatService.messages.send("/ws/message", {}, JSON.stringify(
+    this.chatService.messages.send('/ws/message', {}, JSON.stringify(
       this.message
     ));
   }

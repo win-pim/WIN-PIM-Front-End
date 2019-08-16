@@ -13,7 +13,7 @@ export class UserService {
   }
 
   public makeNew() {
-    this.http.post<User>("http://localhost:8080/auth", JSON.stringify(new User("user", "pass")))
+    this.http.post<User>('http://localhost:8080/auth', JSON.stringify(new User('user', 'pass')));
       // .subscribe(console.log)
   }
 
