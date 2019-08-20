@@ -1,8 +1,8 @@
-<form (ngSubmit)="onSubmit()">
-  <div style="position: relative; display: inline">
+<form class="mat-input-element" (ngSubmit)="onSubmit()">
+  <div class="mat-input-element" style="position: relative; display: inline">
     <mat-form-field>
       <button mat-button style="position: absolute; right: 10px " type="submit">Send</button>
-      <input matInput type="text" [(ngModel)]="message.body" id="body" name="body" placeholder="What do you want to say?">
+      <textarea matInput [(ngModel)]="message.body" id="body" name="body" placeholder="What do you want to say?"></textarea>
     </mat-form-field>
   </div>
 </form>
