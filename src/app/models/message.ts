@@ -4,8 +4,8 @@ import {Reaction} from './reaction';
 
 export class Message {
   body: string;
-  createdAt;
-  author: any;
-  channel: any;
-  reactions: any[];
+  createdAt: any;
+  author: User;
+  channel: Channel;
+  reactions: Reaction[];
 }

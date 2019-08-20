@@ -21,13 +21,18 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@stomp/ng2-stompjs": "^7.2.0",
+    "@stomp/rx-stomp": "^0.3.2",
+    "@stomp/stompjs": "^5.4.2",
     "@types/stompjs": "^2.3.4",
     "express": "latest",
     "net": "^1.0.2",
+    "ngx-socket-io": "^3.0.1",
     "rxjs": "~6.4.0",
     "socket.io": "latest",
     "stompjs": "^2.3.3",
     "tslib": "^1.9.0",
+    "websocket": "^1.0.29",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

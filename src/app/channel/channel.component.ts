@@ -1,40 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import {Message} from '../message';
-import {User} from '../user';
-import {ChatService} from '../chat.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MessageService} from '../services/message.service';
 
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.css']
 })
-export class ChannelComponent implements OnInit {
-  showFiller = false;
-  message: Message;
-  messages: Message[];
-  user1: User;
+export class ChannelComponent implements OnInit, OnDestroy {
 
-
-
-  constructor(private chatService: ChatService) {
-    this.messages = [];
-  }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
-    // this.chatService.messages.subscribe(msg => {
-    //   console.log('Response from websocket: ' + msg);
-    //   this.messages.unshift(msg);
-    // });
+    this.messageService.getMessages();
+    this.messageService.connect();
   }
 
-  onSubmit() {
-    console.log('new message from client to websocket: ', JSON.stringify(this.message));
-    this.message = new Message();
-    this.message.author = this.user1;
+  changeChannel(channel): void {
+    this.messageService.currentChannel = channel;
+    this.messageService.getMessages();
+    this.messageService.disconnect();
+  }
 
-    // @ts-ignore
-    this.chatService.messages.send('/ws/message', {}, JSON.stringify(
-      this.message
-    ));
+  ngOnDestroy(): void {
+    this.messageService.disconnect();
   }
 }

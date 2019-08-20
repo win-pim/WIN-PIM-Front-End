@@ -3,75 +3,25 @@
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
     <button mat-raised-button style="z-index: 1; width: inherit; background-color: #f3662a; color: white; position: sticky; top: 0; left: 0" >
       Add Channel</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-    # General</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-     # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
+    <button *ngFor="let channel of messageService.channelList" (click)="changeChannel(channel)" mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+    # {{channel.name}}</button>
     <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
       <!--Add Channel</button>-->
   </mat-drawer>
   <div class="header" style="position: relative; top: 0; text-align: center; height: 10px">
     <button mat-raised-button (click)="drawer.toggle()" style="z-index: 1; width: 150px; background-color: #f3662a; color: white; position: sticky; top: 0; left: 0" >
       Hide Channel List</button>
-    <h2>header</h2>
+    <h2 *ngIf="messageService.currentChannel.name">{{messageService.currentChannel.name}}</h2>
   </div>
   <div class="example-sidenav-content">
     <div style="width: 100%; height: 85%; margin-top: 0; background-color: lightgrey;overflow-y: scroll; position: center">
-      <div *ngFor='let message of messages'>
+      <div *ngFor='let message of messageService.messages'>
         <h4>{{message.author.name}}</h4>
         <p>{{message.body}}</p>
       </div>
     </div>
     <div class="container " style="position: fixed;bottom: 0">
-      <app-chatbox></app-chatbox>
+      <app-message-input></app-message-input>
     </div>
   </div>
 </mat-drawer-container>

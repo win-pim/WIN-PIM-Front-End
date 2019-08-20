@@ -36,19 +36,20 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {UserService} from './user-service.service';
-import {MessageService} from './message-service.service';
-import { ChatboxComponent } from './chatbox/chatbox.component';
-import { AuthComponent } from './auth/auth.component';
+import {UserService} from './services/user.service';
+import {MessageService} from './services/message.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MessageInputComponent} from './message-input/message-input.component';
+import {Global} from './models/global';
+import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
+import {RxStompConfig} from './rx-stomp-config';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatboxComponent,
-    AuthComponent,
     LoginComponent,
-    ChannelComponent
+    ChannelComponent,
+    MessageInputComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,18 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     UserService,
-    MessageService
+    MessageService,
+    RxStompService,
+    {
+      provide: InjectableRxStompConfig,
+      useValue: RxStompConfig
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    },
+    Global
   ],
   exports: [ MatFormFieldModule],
   bootstrap: [AppComponent]

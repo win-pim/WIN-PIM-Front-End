@@ -1,12 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div>
-<!--  <app-login></app-login>-->
-<div style="text-align:center">
-  <app-auth></app-auth>
+<div *ngIf="!userService.loggedInUser.name">
+    <app-login></app-login>
 </div>
-<div>
-<!--  <app-login></app-login>-->
+<div *ngIf="userService.loggedInUser.name">
   <app-channel></app-channel>
 </div>
 
