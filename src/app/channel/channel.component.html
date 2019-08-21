@@ -1,12 +1,16 @@
 <div style="display: flex; justify-content: flex-end; position: relative">
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
-    <div id="newChannel">
-    <button mat-icon-button id="btn-new-channel" >
-      <mat-icon>control_point</mat-icon>
+<!--    <div id="newChannel">-->
+<!--    <button mat-icon-button id="btn-new-channel" >-->
+<!--      <mat-icon>control_point</mat-icon>-->
+<!--    </button>-->
+<!--      <input matInput type="text" style="padding: 0; margin: 0; color: white; border: solid; text-align: center" placeholder="Add Channel">-->
+<!--    </div>-->
+    <button mat-raised-button style="width:100%; margin:0;background-color: #fab90a; color: white " (click)="openDialog()">Add A Channel</button>
+    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white"  *ngIf="channel">
+      #{{channel}}
     </button>
-      <input matInput type="text" style="padding: 0; margin: 0; color: white; border: solid; text-align: center" placeholder="Add Channel">
-    </div>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
     # General</button>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
@@ -29,41 +33,11 @@
       # Brain Trust</button>
     <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
       # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Random</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spring 2019</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Capstone Prod.</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Brain Trust</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
-      # Spoilers</button>
     <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
       <!--Add Channel</button>-->
   </mat-drawer>
   <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
-    <button mat-raised-button (click)="drawer.toggle(); toggle = !toggle" style="float: left; background-color: #f3662a; margin-top: 0; color: white; position: sticky; top: 0; left: 0" >
+    <button mat-raised-button (click)="drawer.toggle(); toggle = !toggle" style="float: left; background-color: #f3662a; margin-top: 0; color: white; position: sticky; top: 0; left: 0; height: 4.8vh" >
       <mat-icon>
         {{toggle ? 'arrow_forward' : 'arrow_back'}}
       </mat-icon>
