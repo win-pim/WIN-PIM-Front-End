@@ -12,10 +12,6 @@
     <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
       <!--Add Channel</button>-->
   </mat-drawer>
-  <div class="header" style="position: relative; top: 0; text-align: center; height: 10px">
-    <button mat-raised-button (click)="drawer.toggle()" style="z-index: 1; width: 150px; background-color: #f3662a; color: white; position: sticky; top: 0; left: 0" >
-      Hide Channel List</button>
-    <h2 *ngIf="messageService.currentChannel.name">{{messageService.currentChannel.name}}</h2>
   <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
     <button mat-raised-button (click)="drawer.toggle(); toggle = !toggle" style="float: left; background-color: #f3662a; margin-top: 0; color: white; position: sticky; top: 0; left: 0" >
       <mat-icon>

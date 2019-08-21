@@ -9,6 +9,7 @@ import {MessageService} from '../services/message.service';
 export class ChannelComponent implements OnInit, OnDestroy {
 
   constructor(private messageService: MessageService) {}
+  toggle = true;
 
   ngOnInit(): void {
     this.messageService.getMessages();
