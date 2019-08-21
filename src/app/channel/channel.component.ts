@@ -1,5 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MessageService} from '../services/message.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  channel: string;
+}
 
 @Component({
   selector: 'app-channel',
@@ -8,9 +13,21 @@ import {MessageService} from '../services/message.service';
 })
 export class ChannelComponent implements OnInit, OnDestroy {
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, public dialog: MatDialog) {}
   toggle = true;
+  channel: string;
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
+      width: '250px',
+      data: {channel: this.channel}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.channel = result;
+    });
+  }
   ngOnInit(): void {
     this.messageService.getMessages();
     this.messageService.connect();
@@ -24,5 +41,20 @@ export class ChannelComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.messageService.disconnect();
+  }
+}
+
+@Component({
+  selector: 'app-dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
