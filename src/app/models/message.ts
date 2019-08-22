@@ -3,9 +3,15 @@ import {Channel} from './channel';
 import {Reaction} from './reaction';
 
 export class Message {
-  body: string;
   createdAt: any;
-  author: User;
-  channel: Channel;
   reactions: Reaction[];
+  id: number;
+
+  constructor(public body: string, public author: User, channel: Channel) {
+
+  }
+
+  public get channel() {
+
+  }
 }

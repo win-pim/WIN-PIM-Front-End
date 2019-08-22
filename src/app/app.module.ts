@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ChannelComponent, DialogOverviewExampleDialogComponent } from './channel/channel.component';
+import { ChannelComponent } from './channel/channel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
@@ -43,6 +43,7 @@ import { MessageInputComponent } from './message-input/message-input.component';
 import { Global } from './models/global';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { RxStompConfig } from './rx-stomp-config';
+import { ChannelDrawerComponent } from './channel-drawer/channel-drawer.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { RxStompConfig } from './rx-stomp-config';
     LoginComponent,
     ChannelComponent,
     MessageInputComponent,
-    DialogOverviewExampleDialogComponent
+    ChannelDrawerComponent
   ],
   imports: [
     BrowserModule,
@@ -109,10 +110,9 @@ import { RxStompConfig } from './rx-stomp-config';
     Global
   ],
   entryComponents: [
-    DialogOverviewExampleDialogComponent,
-    ChannelComponent
+    ChannelDrawerComponent
   ],
-  exports: [ MatFormFieldModule],
+  exports: [MatFormFieldModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

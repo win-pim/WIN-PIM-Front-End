@@ -1,60 +1,20 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {MessageService} from '../services/message.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-export interface DialogData {
-  channel: string;
-}
+import { Component, Input, OnInit } from '@angular/core';
+import { Channel } from '../models/channel';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.css']
 })
-export class ChannelComponent implements OnInit, OnDestroy {
+export class ChannelComponent implements OnInit {
+  @Input() channel: Channel;
 
-  constructor(private messageService: MessageService, public dialog: MatDialog) {}
-  toggle = true;
-  channel: string;
+  constructor(private messageService: MessageService) { }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
-      width: '250px',
-      data: {channel: this.channel}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.channel = result;
-    });
-  }
-  ngOnInit(): void {
-    this.messageService.getMessages();
-    this.messageService.connect();
-  }
-
-  changeChannel(channel): void {
-    this.messageService.currentChannel = channel;
-    this.messageService.getMessages();
-    this.messageService.disconnect();
-  }
-
-  ngOnDestroy(): void {
-    this.messageService.disconnect();
+  ngOnInit() {
+    if(this.channel.id != undefined)
+        this.messageService.updateMessages(this.channel);
   }
 }
 
-@Component({
-  selector: 'app-dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialogComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
