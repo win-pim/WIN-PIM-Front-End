@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  machineUrl: 'http://R902FHG4:8080',
   httpUrl: 'http://localhost:8080',
   wsUrl: 'ws://localhost:8080/ws'
 };

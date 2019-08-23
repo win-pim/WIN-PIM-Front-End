@@ -116,11 +116,5 @@
         }
       }
     }
-  },
-  "defaultProject": "win-pim",
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "scss"
-    }
   }
 }

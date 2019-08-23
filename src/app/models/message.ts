@@ -7,11 +7,13 @@ export class Message {
   reactions: Reaction[];
   id: number;
 
-  constructor(public body: string, public author: User, channel: Channel) {
+  constructor(public body: string, public author: User, public channel: Channel) { }
 
-  }
-
-  public get channel() {
-
+  toJson(): object {
+    return {
+      body: this.body,
+      author: this.author.id,
+      channel: this.channel.id
+    }
   }
 }

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080/message'
+  httpUrl: 'http://wim.heroku.com',
+  wsUrl: 'ws://wim.heroku.com/ws'
 };

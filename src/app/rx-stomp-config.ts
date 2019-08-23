@@ -3,4 +3,5 @@ import { environment } from '../environments/environment';
 
 export const RxStompConfig: InjectableRxStompConfig = {
   brokerURL: environment.wsUrl,
+  heartbeatOutgoing: 100
 };
