@@ -21,7 +21,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
   description: string;
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
       height: '400px',
       data: {channel: this.channel, description: this.description}
@@ -50,14 +50,11 @@ export class ChannelComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
+  selector: 'app-dialog',
+  templateUrl: 'dialog.html',
 })
-export class DialogOverviewExampleDialogComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+export class DialogComponent {
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ChannelComponent, DialogOverviewExampleDialogComponent } from './channel/channel.component';
+import { ChannelComponent, DialogComponent } from './channel/channel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
@@ -50,7 +50,7 @@ import { RxStompConfig } from './rx-stomp-config';
     LoginComponent,
     ChannelComponent,
     MessageInputComponent,
-    DialogOverviewExampleDialogComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +109,7 @@ import { RxStompConfig } from './rx-stomp-config';
     Global
   ],
   entryComponents: [
-    DialogOverviewExampleDialogComponent,
+    DialogComponent,
     ChannelComponent
   ],
   exports: [ MatFormFieldModule],
