@@ -34,7 +34,20 @@
     <div id="messageBox">
       <div id="message" *ngFor='let message of messageService.messages'>
         <mat-card [class.self]="message.author.id == userService.loggedInUser.id">
+          <div class="messageStuff">
           <mat-card-title [ngStyle]="{'color': message.author.id == userService.loggedInUser.id ? '#8b1b36':'black'}">{{message.author.name}}</mat-card-title>
+          <button *ngIf="message.author.id == userService.loggedInUser.id" mat-icon-button [matMenuTriggerFor]="menu" class="menu"><i class="material-icons">
+            more_horiz
+          </i></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item class="edit"><i class="material-icons">
+              edit
+            </i> Edit</button>
+            <button mat-menu-item class="delete"><i class="material-icons">
+              delete
+            </i> Delete</button>
+          </mat-menu>
+          </div>
           <mat-card-content>
             <p>{{message.body}}</p>
           </mat-card-content>
