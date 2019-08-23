@@ -22,9 +22,12 @@
         {{!toggle ? 'arrow_forward' : 'arrow_back'}}
       </mat-icon>
     </button>
-    <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center; border: #8b1b36">
-    <h3 style="top: 0; margin-top: 0;margin-bottom: 6px"># {{messageService.currentChannel.name}}</h3>
-    <small style="margin-top: 0">- {{messageService.currentChannel.description}}</small>
+    <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center; border: #8b1b36; z-index: 1">
+      <div  style="display:flex; justify-content: space-between">
+      <img width="5%" alt="Angular Logo" src="assets/images/Logo.svg">
+    <h1 style="top: 0; margin-top: 0;margin-bottom: 0; flex-grow: 0.95; margin-right: 7vw;font-family: fantasy; color: #8b1b36 "># {{messageService.currentChannel.name}}</h1>
+      </div>
+    <small style="margin-top: 0; display: block;">- {{messageService.currentChannel.description}}</small>
     </div>
   </div>
   <div class="example-sidenav-content" #scrollBar [scrollTop]="scrollBar.scrollHeight" *ngIf="messageService.messages.length > 0">
@@ -44,4 +47,3 @@
   </div>
 </mat-drawer-container>
 </div>
-

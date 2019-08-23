@@ -1,10 +1,16 @@
-<div mat-dialog-content>
-<p>Channel Name: </p>
+<div mat-dialog-content style="text-align: center">
+<h1 style="color: #8b1b36; font-family: fantasy; text-shadow: 2px 0 10px grey ">Channel Info: </h1>
+  <br>
 <mat-form-field>
-  <input matInput [(ngModel)]="data.channel">
+  <input matInput [(ngModel)]="data.channel" placeholder="Channel Name" style="font-size: 12px">
 </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="data.description" placeholder="Channel Description" style="font-size: 12px;resize: none"></textarea>
+  </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.channel" cdkFocusInitial>Ok</button>
+<br>
+<div mat-dialog-actions style="justify-content: center">
+  <button mat-button (click)="onNoClick()" style="background-color: #fab90a; color: white; box-shadow: 2px 0 10px grey; margin-right: 2vw">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="background-color: #8b1b36; color: white; box-shadow: 2px 0 10px black">Ok</button>
 </div>
