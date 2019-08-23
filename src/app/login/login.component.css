@@ -9,8 +9,31 @@
 
 .example-container > * {
   width: 100%;
+  child-align: auto !important;
+}
+
+
+#btn-login{
+  background-color: #8b1b36;
+  color: white;
+  width: 15vw;
+}
+
+#buttons{
+  display: inline;
+  margin-top: 2em;
+}
+
+#btn-signup{
+  background-color: #fab90a;
+  color: white;
+  margin-left: 1em;
 }
 
 mat-form-field{
   width: 20vw;
+}
+
+#image{
+  text-align:center;
 }

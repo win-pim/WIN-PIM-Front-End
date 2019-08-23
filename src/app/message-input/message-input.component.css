@@ -12,3 +12,14 @@ button {
   background-color: #a24760;
   color: white;
 }
+
+.mat-input-element{
+  margin-bottom: 3vh;
+}
+
+
+#btn-send{
+  position: absolute;
+  right: 20px;
+}
+

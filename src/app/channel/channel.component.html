@@ -7,8 +7,8 @@
 <!--      </button>-->
 <!--      <input matInput type="text" style="padding: 0; margin: 0; color: white; border: solid; text-align: center" placeholder="Add Channel">-->
 <!--    </div>-->
-    <button mat-raised-button id="newChannel" (click)="openDialog()">Add A Channel</button>
-    <button mat-raised-button id="channel" *ngIf="channel">
+    <button mat-raised-button id="btn-newChannel" (click)="openDialog()">Add A Channel</button>
+    <button mat-raised-button id="btn-channel" *ngIf="channel">
       #{{channel}}
     </button>
     <button id="channels" *ngFor="let channel of messageService.channelList" (click)="changeChannel(channel)" mat-raised-button>
