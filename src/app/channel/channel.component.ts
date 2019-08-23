@@ -1,6 +1,7 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MessageService} from '../services/message.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {UserService} from '../services/user.service';
 
 export interface DialogData {
   channel: string;
@@ -13,7 +14,7 @@ export interface DialogData {
 })
 export class ChannelComponent implements OnInit, OnDestroy {
 
-  constructor(private messageService: MessageService, public dialog: MatDialog) {}
+  constructor(private messageService: MessageService, public userService: UserService, public dialog: MatDialog) {}
   toggle = true;
   channel: string;
 

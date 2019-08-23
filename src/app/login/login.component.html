@@ -12,7 +12,7 @@
     <div class="mat-input-element">
       <mat-form-field >
         <input matInput name="password" [(ngModel)]="user.pass" #password minlength="8" placeholder="Password" [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-hint  align="center" hidden hintLabel="Max 10 characters">{{password.value?.length || 0}}/100</mat-hint>
