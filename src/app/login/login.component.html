@@ -1,7 +1,7 @@
-<div style="text-align:center">
+<div id="image">
 <img width="30%" alt="Angular Logo" src="assets/images/Logo.svg">
 </div>
-<div class="example-container" align="center" style="child-align: auto">
+<div class="example-container" align="center">
   <form (ngSubmit)="onSubmit()">
     <div class="mat-input-element">
       <mat-form-field >
@@ -12,16 +12,16 @@
     <div class="mat-input-element">
       <mat-form-field >
         <input matInput name="password" [(ngModel)]="user.pass" #password minlength="8" placeholder="Password" [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-hint  align="center" hidden hintLabel="Max 10 characters">{{password.value?.length || 0}}/100</mat-hint>
       </mat-form-field>
       <br>
     </div>
-      <div style=" display: inline; margin-top: 2em">
-      <button mat-button style="background-color: #8b1b36; color: white; width: 15vw" name="SubmitIn" type="submit" (click)="submit = 'in'">Log in</button>
-      <button mat-button style="background-color: #fab90a; color: white; margin-left: 1em" name="SubmitUp" type="submit" (click)="submit = 'up'">Sign Up</button>
+      <div id="buttons">
+      <button mat-button id="btn-login" name="SubmitIn" type="submit" (click)="submit = 'in'">Log in</button>
+      <button mat-button id="btn-signup" name="SubmitUp" type="submit" (click)="submit = 'up'">Sign Up</button>
     </div>
   </form>
 </div>

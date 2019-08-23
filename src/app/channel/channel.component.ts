@@ -1,9 +1,11 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MessageService} from '../services/message.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {UserService} from '../services/user.service';
 
 export interface DialogData {
   channel: string;
+  description: string;
 }
 
 @Component({
@@ -13,19 +15,22 @@ export interface DialogData {
 })
 export class ChannelComponent implements OnInit, OnDestroy {
 
-  constructor(private messageService: MessageService, public dialog: MatDialog) {}
+  constructor(private messageService: MessageService, public userService: UserService, public dialog: MatDialog) {}
   toggle = true;
   channel: string;
+  description: string;
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
-      width: '250px',
-      data: {channel: this.channel}
+      width: '400px',
+      height: '400px',
+      data: {channel: this.channel, description: this.description}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.channel = result;
+      this.channel = result.channel;
+      this.description = result.description;
     });
   }
   ngOnInit(): void {

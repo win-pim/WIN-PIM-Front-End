@@ -1,41 +1,62 @@
-<div style="display: flex; justify-content: flex-end; position: relative">
+<div class="main_div">
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #793548" opened >
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened >
 <!--    <div id="newChannel">-->
 <!--      <button mat-icon-button id="btn-new-channel" >-->
 <!--        <mat-icon>control_point</mat-icon>-->
 <!--      </button>-->
 <!--      <input matInput type="text" style="padding: 0; margin: 0; color: white; border: solid; text-align: center" placeholder="Add Channel">-->
 <!--    </div>-->
-    <button mat-raised-button style="width:100%; margin:0;background-color: #fab90a; color: white " (click)="openDialog()">Add A Channel</button>
-    <button mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white"  *ngIf="channel">
+    <button mat-raised-button id="btn-newChannel" (click)="openDialog()">Add A Channel</button>
+    <button mat-raised-button id="btn-channel" *ngIf="channel">
       #{{channel}}
     </button>
-    <button *ngFor="let channel of messageService.channelList" (click)="changeChannel(channel)" mat-raised-button style="width: 100%; margin: 0; background-color: #8b1b36; color: white" >
+    <button id="channels" *ngFor="let channel of messageService.channelList" (click)="changeChannel(channel)" mat-raised-button>
     # {{channel.name}}</button>
     <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
       <!--Add Channel</button>-->
   </mat-drawer>
-  <div class="header" style="position: relative; top: 0; margin-top: 0; text-align: center">
-    <button mat-raised-button (click)="drawer.toggle(); toggle = !toggle" style="float: left; background-color: #f3662a; margin-top: 0; color: white; position: sticky; top: 0; left: 0; height: 4.8vh" >
+  <div class="headerdiv">
+    <button mat-raised-button id="toggleNav" (click)="drawer.toggle(); toggle = !toggle" >
       <mat-icon>
         {{!toggle ? 'arrow_forward' : 'arrow_back'}}
       </mat-icon>
     </button>
-    <h3 style="top: 0; margin-top: 0;margin-bottom: 6px" *ngFor="let channel of messageService.channelList"># {{channel.name}}</h3>
-    <small style="margin-top: 0" *ngFor="let channel of messageService.channelList">- {{channel.description}}</small>
+    <div class="header">
+      <div id="header">
+      <img width="5%" alt="Angular Logo" src="assets/images/Logo.svg">
+    <h1 id="channelDescription"># {{messageService.currentChannel.name}}</h1>
+      </div>
+    <small id="currentChannel">- {{messageService.currentChannel.description}}</small>
+    </div>
   </div>
   <div class="example-sidenav-content">
-    <div style="width: 100%; height: 85%; margin-top: 0; margin-bottom: auto; background-color: lightgrey;overflow-y: scroll; position: center">
-      <div *ngFor='let message of messageService.messages'>
-        <h4>{{message.author.name}}</h4>
-        <p>{{message.body}}</p>
+    <div id="messageBox">
+      <div id="message" *ngFor='let message of messageService.messages'>
+        <mat-card [class.self]="message.author.id == userService.loggedInUser.id">
+          <div class="messageStuff">
+          <mat-card-title [ngStyle]="{'color': message.author.id == userService.loggedInUser.id ? '#8b1b36':'black'}">{{message.author.name}}</mat-card-title>
+          <button *ngIf="message.author.id == userService.loggedInUser.id" mat-icon-button [matMenuTriggerFor]="menu" class="menu"><i class="material-icons">
+            more_horiz
+          </i></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item class="edit"><i class="material-icons">
+              edit
+            </i> Edit</button>
+            <button mat-menu-item class="delete"><i class="material-icons">
+              delete
+            </i> Delete</button>
+          </mat-menu>
+          </div>
+          <mat-card-content>
+            <p>{{message.body}}</p>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
-    <div class="container " style="position: fixed;bottom: 0">
+    <div class="container">
       <app-message-input></app-message-input>
     </div>
   </div>
 </mat-drawer-container>
 </div>
-

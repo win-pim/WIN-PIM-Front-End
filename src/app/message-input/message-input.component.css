@@ -3,3 +3,23 @@ mat-form-field{
   padding: 3em;
   height: 5vh;
 }
+
+textarea {
+  resize: none;
+}
+
+button {
+  background-color: #a24760;
+  color: white;
+}
+
+.mat-input-element{
+  margin-bottom: 3vh;
+}
+
+
+#btn-send{
+  position: absolute;
+  right: 20px;
+}
+
