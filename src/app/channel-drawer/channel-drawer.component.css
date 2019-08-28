@@ -26,7 +26,23 @@
 
 }
 
-#toggleNav {
+#logout{
+  width:7%;
+  height:10%;
+  margin:0;
+  font-size: medium;
+  background-color: #fab90a;
+  color: white;
+  position: absolute;
+  right: 0;
+  top:0;
+}
+
+a:visited{
+color: white;
+}
+
+#toggleNav{
   float: left;
   background-color: #f3662a;
   margin-top: 0;
