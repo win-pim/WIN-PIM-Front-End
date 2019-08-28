@@ -1,60 +1,56 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {MessageService} from '../services/message.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {UserService} from '../services/user.service';
-
-export interface DialogData {
-  channel: string;
-  description: string;
-}
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from '../services/user.service';
+import { Channel } from '../models/channel';
+import { ChannelService } from '../services/channel.service';
 
 @Component({
-  selector: 'app-channel',
-  templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.css']
+  selector: 'app-channel-drawer',
+  templateUrl: './channel-drawer.component.html',
+  styleUrls: ['./channel-drawer.component.css']
 })
-export class ChannelComponent implements OnInit, OnDestroy {
+export class ChannelDrawerComponent implements OnInit {
+  channels: Channel[];
+  active: Channel;
+  newChannel: Channel;
+  toggle: boolean;
 
-  constructor(private messageService: MessageService, public userService: UserService, public dialog: MatDialog) {}
-  toggle = true;
-  channel: string;
-  description: string;
+  constructor(
+    private userService: UserService,
+    private channelService: ChannelService,
+    public dialog: MatDialog
+  ) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open<DialogComponent, Channel, Channel>(DialogComponent, {
       width: '400px',
       height: '400px',
-      data: {channel: this.channel, description: this.description}
+      data: this.newChannel
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.channel = result.channel;
-      this.description = result.description;
+      this.newChannel = result;
     });
   }
+
   ngOnInit(): void {
-    this.messageService.getMessages();
-    this.messageService.connect();
+    this.channels = this.channelService.channels;
   }
 
-  changeChannel(channel): void {
-    this.messageService.currentChannel = channel;
-    this.messageService.getMessages();
-    this.messageService.disconnect();
-  }
-
-  ngOnDestroy(): void {
-    this.messageService.disconnect();
+  changeChannel(channel: Channel): void {
+    this.active = channel;
   }
 }
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'app-dialog-overview-example-dialog',
   templateUrl: 'dialog.html',
 })
 export class DialogComponent {
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Channel) {}
 
   onNoClick(): void {
     this.dialogRef.close();

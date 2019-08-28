@@ -1,63 +1,29 @@
-<div class="main_div">
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened >
-<!--    <div id="newChannel">-->
-<!--      <button mat-icon-button id="btn-new-channel" >-->
-<!--        <mat-icon>control_point</mat-icon>-->
-<!--      </button>-->
-<!--      <input matInput type="text" style="padding: 0; margin: 0; color: white; border: solid; text-align: center" placeholder="Add Channel">-->
-<!--    </div>-->
-    <button mat-raised-button id="btn-newChannel" (click)="openDialog()">Add A Channel</button>
-    <button mat-raised-button id="btn-channel" *ngIf="channel">
-      #{{channel}}
-    </button>
-    <button id="channels" *ngFor="let channel of messageService.channelList" (click)="changeChannel(channel)" mat-raised-button>
-    # {{channel.name}}</button>
-    <!--<button mat-raised-button style="width: 100%; background-color: #8b1b36;bottom: 0; left: 0; position: absolute; color: white;" >-->
-      <!--Add Channel</button>-->
-  </mat-drawer>
-  <div class="headerdiv">
-    <button mat-raised-button id="toggleNav" (click)="drawer.toggle(); toggle = !toggle" >
-      <mat-icon>
-        {{!toggle ? 'arrow_forward' : 'arrow_back'}}
-      </mat-icon>
-    </button>
-    <div class="header">
-      <div id="header">
-      <img width="5%" alt="Angular Logo" src="assets/images/Logo.svg">
-    <h1 id="channelDescription"># {{messageService.currentChannel.name}}</h1>
+<div class="main-div">
+  <mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side" opened>
+      <button mat-raised-button id="btn-newChannel" (click)="openDialog()">Add A Channel</button>
+      <button class="channel" *ngFor="let channel of channels" [class.active]="channel == active" (click)="changeChannel(channel)" mat-raised-button>
+        #{{channel.name}}
+      </button>
+    </mat-drawer>
+    <div class="header" *ngIf="active">
+      <button mat-raised-button id="toggle-nav" (click)="drawer.toggle(); toggle = !toggle" >
+        <mat-icon>
+          {{!toggle ? 'arrow_forward' : 'arrow_back'}}
+        </mat-icon>
+      </button>
+
+      <div class="channel-header">
+        <div id="channel-title">
+          <img width="5%" alt="Angular Logo" src="assets/images/Logo.svg">
+          <h1 id="channel-name">#{{active.name}}</h1>
+        </div>
+        <small id="channel-desc">- {{active.description}}</small>
       </div>
-    <small id="currentChannel">- {{messageService.currentChannel.description}}</small>
+
+      <button id="logout"><a href="/login" (click)="userService.logout()">Log Out</a></button>
+
+      <app-channel [channel]="active"></app-channel>
     </div>
-    <button id="logout"><a href="login" click="user.logout()">Log Out</a> </button>
-  </div>
-  <div class="example-sidenav-content">
-    <div id="messageBox">
-      <div id="message" *ngFor='let message of messageService.messages'>
-        <mat-card [class.self]="message.author.id == userService.loggedInUser.id">
-          <div class="messageStuff">
-          <mat-card-title [ngStyle]="{'color': message.author.id == userService.loggedInUser.id ? '#8b1b36':'black'}">{{message.author.name}}</mat-card-title>
-          <button *ngIf="message.author.id == userService.loggedInUser.id" mat-icon-button [matMenuTriggerFor]="menu" class="menu"><i class="material-icons">
-            more_horiz
-          </i></button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item class="edit"><i class="material-icons">
-              edit
-            </i> Edit</button>
-            <button mat-menu-item class="delete"><i class="material-icons">
-              delete
-            </i> Delete</button>
-          </mat-menu>
-          </div>
-          <mat-card-content>
-            <p>{{message.body}}</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-    <div class="container">
-      <app-message-input></app-message-input>
-    </div>
-  </div>
-</mat-drawer-container>
+  </mat-drawer-container>
 </div>

@@ -1,11 +1,19 @@
-import {User} from './user';
-import {Channel} from './channel';
-import {Reaction} from './reaction';
+import { User } from './user';
+import { Channel } from './channel';
+import { Reaction } from './reaction';
 
 export class Message {
-  body: string;
   createdAt: any;
-  author: User;
-  channel: Channel;
   reactions: Reaction[];
+  id: number;
+
+  constructor(public body: string, public author: User, public channel: Channel) { }
+
+  toJson(): object {
+    return {
+      body: this.body,
+      author: this.author.id,
+      channel: this.channel.id
+    }
+  }
 }

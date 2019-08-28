@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../models/message';
-import { User } from '../models/user';
-import {MessageService} from '../services/message.service';
-import {UserService} from '../services/user.service';
+import { MessageService } from '../services/message.service';
+import { UserService } from '../services/user.service';
+import { Channel } from '../models/channel';
 
 @Component({
   selector: 'app-message-input',
@@ -10,24 +10,19 @@ import {UserService} from '../services/user.service';
   styleUrls: ['./message-input.component.css']
 })
 
-export class MessageInputComponent {
+export class MessageInputComponent implements OnInit {
+  @Input() channel: Channel;
   message: Message;
 
-  constructor(private userService: UserService, private messageService: MessageService) {
-    this.message = new Message();
-  }
+  constructor(private userService: UserService, private messageService: MessageService) { }
 
-  newMessageTemplate(): Message {
-    const newMsg = new Message();
-    newMsg.channel = this.messageService.currentChannel;
-    newMsg.author = this.userService.loggedInUser;
-    return newMsg;
+  ngOnInit(): void {
+    this.message = new Message('', this.userService.loggedInUser, this.channel);
   }
 
   onSubmit() {
-    this.message.channel = this.messageService.currentChannel;
-    this.message.author = this.userService.loggedInUser;
+    this.message.channel = this.channel;
     this.messageService.postMessage(this.message);
-    this.message = new Message();
+    this.message.body = '';
   }
 }

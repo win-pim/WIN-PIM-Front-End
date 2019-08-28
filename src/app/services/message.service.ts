@@ -11,68 +11,39 @@ import { RxStompState } from '@stomp/rx-stomp';
   providedIn: 'root'
 })
 export class MessageService {
-
-  constructor(public http: HttpClient, private rxStompService: RxStompService) {
-    this.getCurrentChannel();
-  }
-
-  public url = environment.httpUrl;
-  public currentChannel: Channel  = {
-    id: 1,
-    name: 'TestName',
-    description: 'TestDesc'
-  };
-  public channelList: Channel[] = [];
-  public messages: Message[] = [];
-  public messageSubscription: Subscription;
-
-
-
-
-  public connect() {
-    this.messageSubscription = this.rxStompService.watch('/message?channel=' + this.currentChannel.id, {})
-      .subscribe((response) => {
-        console.log(response);
-        this.messages.push(JSON.parse(response.body));
-      });
-    this.rxStompService.connectionState$.subscribe((state) => {
+  constructor(private http: HttpClient, private rxStompService: RxStompService) {
+    rxStompService.connectionState$.subscribe((state) => {
       // state is an Enum (Integer), RxStompState[state] is the corresponding string
       console.log(RxStompState[state]);
     });
+
   }
 
-  public disconnect() {
-    this.messageSubscription.unsubscribe();
-  }
-
-  private getCurrentChannel = () => {
-    this.getChannels();
-    setTimeout (() => {
-    if (this.channelList.length > 0) {
-      this.currentChannel = this.channelList[0];
-    }}, 1000
-  );
-  }
-
-  public getChannels() {
-    this.http.get<Channel[]>(this.url + '/channel')
-      .subscribe(response => {
-        this.channelList = response;
-      });
-  }
-
-  public getMessages() {
-    this.http.get<Message[]>(this.url + '/message?channel=' + this.currentChannel.id)
-      .subscribe((response) => {
-        this.messages = response;
-      });
-  }
-
-  public postMessage(newMsg: Message) {
-    this.rxStompService.publish({
-      destination: environment.wsUrl + '/message?channel=' + this.currentChannel.id,
-      body: JSON.stringify(newMsg)
+  public updateMessages(channel: Channel): Channel {
+    this.http.get<Message[]>(`${environment.httpUrl}/messages?channel=${channel.id}`).subscribe(res => {
+      channel.messages = res;
     });
-    this.http.post(this.url + '/message', newMsg).subscribe(console.log);
+    return channel;
+  }
+
+  public postMessage(message: Message) {
+    this.http.post<Message>(`${environment.httpUrl}/messages`, message.toJson()).subscribe();
+  }
+
+  public subscribe(channel: Channel): Subscription {
+    return this.rxStompService.watch('/messages').subscribe(res => {
+      // If the message is new or was edited, we get it as a Message.
+      // If the message was deleted, we just get its id as a number.
+      let message: Message | number = JSON.parse(res.body);
+      console.log(message);
+      if(message instanceof Message) {
+        if(message.channel.id != channel.id) return;
+        let i = channel.messages.findIndex(m => m.id == (message as Message).id);
+        if(i == -1) channel.messages.push(message);
+        else channel.messages[i] = message;
+      } else {
+        channel.messages = channel.messages.filter(m => m.id != message);
+      }
+    });
   }
 }
