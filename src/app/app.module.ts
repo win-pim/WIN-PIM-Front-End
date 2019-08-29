@@ -44,15 +44,16 @@ import { Global } from './models/global';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { RxStompConfig } from './rx-stomp-config';
 import { ChannelComponent } from './channel/channel.component';
+import { ChannelService } from './services/channel.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ChannelDrawerComponent,
+    ChannelComponent,
     MessageInputComponent,
-    DialogComponent,
-    ChannelComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +100,7 @@ import { ChannelComponent } from './channel/channel.component';
     UserService,
     MessageService,
     RxStompService,
+    ChannelService,
     {
       provide: InjectableRxStompConfig,
       useValue: RxStompConfig
@@ -110,7 +112,7 @@ import { ChannelComponent } from './channel/channel.component';
     },
     Global
   ],
-  entryComponents: [ChannelDrawerComponent, DialogComponent, ChannelComponent],
+  entryComponents: [DialogComponent, ChannelDrawerComponent],
   exports: [MatFormFieldModule],
   bootstrap: [AppComponent]
 })

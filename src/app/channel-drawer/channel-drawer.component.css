@@ -162,14 +162,6 @@ mat-drawer {
   margin-left: 94%;
   position: absolute;
 }
-
-/*.mat-raised-button {*/
-/*  width: 100%;*/
-/*  margin: 0;*/
-/*  background-color: #8b1b36;*/
-/*  color: white;*/
-/*}*/
-
 .mat-raised-button.active-channel {
   background-color: #fab90a;
 }

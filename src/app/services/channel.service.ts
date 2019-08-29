@@ -14,9 +14,12 @@ export class ChannelService {
   public get channels(): Channel[] {
     this.http.get<Channel[]>(`${environment.httpUrl}/channels`).subscribe(res => {
       this._channels.length = 0;
-      this._channels.push(...res)
+      this._channels.push(...res);
     });
     return this._channels;
   }
 
+  public newChannel(channel: Channel) {
+    this.http.post<Channel>(`${environment.httpUrl}/channels`, channel).subscribe();
+  }
 }
