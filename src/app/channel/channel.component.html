@@ -1,7 +1,7 @@
 <div class="sidenav-content">
-  <div id="message-box">
-    <div id="messages" *ngFor='let message of channel.messages'>
-      <mat-card [class.self]="message.author.id == userService.loggedInUser.id">
+  <div id="message-box" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div class="message" *ngFor='let message of channel.messages' >
+      <mat-card [class.self]="message.author.id == userService.loggedInUser.id" >
         <div class="message-header">
           <mat-card-title [ngStyle]="{'color': message.author.id == userService.loggedInUser.id ? '#8b1b36':'black'}">{{message.author.name}}</mat-card-title>
           <button *ngIf="message.author.id == userService.loggedInUser.id" mat-icon-button [matMenuTriggerFor]="menu" class="menu">

@@ -6,6 +6,8 @@ mat-form-field{
 
 textarea {
   resize: none;
+  width: 90%;
+  overflow-y: hidden;
 }
 
 button {
