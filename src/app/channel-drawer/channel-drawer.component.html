@@ -20,10 +20,8 @@
         </div>
         <small id="channel-desc">- {{active.description}}</small>
       </div>
-
       <button id="logout"><a href="/login" (click)="userService.logout()">Log Out</a></button>
-
-      <app-channel [channel]="active"></app-channel>
     </div>
+      <app-channel [channel]="active"></app-channel>
   </mat-drawer-container>
 </div>

@@ -110,7 +110,7 @@ import { ChannelComponent } from './channel/channel.component';
     },
     Global
   ],
-  entryComponents: [ChannelDrawerComponent],
+  entryComponents: [ChannelDrawerComponent, DialogComponent, ChannelComponent],
   exports: [MatFormFieldModule],
   bootstrap: [AppComponent]
 })

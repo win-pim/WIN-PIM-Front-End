@@ -4,11 +4,17 @@ import { UserService } from '../services/user.service';
 import { Channel } from '../models/channel';
 import { ChannelService } from '../services/channel.service';
 
+export interface DialogData {
+  newChannel: Channel;
+}
+
+
 @Component({
   selector: 'app-channel-drawer',
   templateUrl: './channel-drawer.component.html',
   styleUrls: ['./channel-drawer.component.css']
 })
+
 export class ChannelDrawerComponent implements OnInit {
   channels: Channel[];
   active: Channel;
@@ -22,7 +28,7 @@ export class ChannelDrawerComponent implements OnInit {
   ) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open<DialogComponent, Channel, Channel>(DialogComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
       height: '400px',
       data: this.newChannel
@@ -43,14 +49,14 @@ export class ChannelDrawerComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-dialog-overview-example-dialog',
+  selector: 'dialog',
   templateUrl: 'dialog.html',
 })
 export class DialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Channel) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
     this.dialogRef.close();

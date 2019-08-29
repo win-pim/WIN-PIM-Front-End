@@ -18,4 +18,5 @@ export class ChannelService {
     });
     return this._channels;
   }
+
 }
