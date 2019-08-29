@@ -35,14 +35,14 @@ export class MessageService {
       // If the message is new or was edited, we get it as a Message.
       // If the message was deleted, we just get its id as a number.
       let message: Message | number = JSON.parse(res.body);
-      console.log(message);
-      if(message instanceof Message) {
-        if(message.channel.id != channel.id) return;
-        let i = channel.messages.findIndex(m => m.id == (message as Message).id);
-        if(i == -1) channel.messages.push(message);
-        else channel.messages[i] = message;
-      } else {
+      if(typeof message == 'number') {
         channel.messages = channel.messages.filter(m => m.id != message);
+      } else {
+        console.log(message);
+        if (message.channel.id != channel.id) return;
+        let i = channel.messages.findIndex(m => m.id == (message as Message).id);
+        if (i == -1) channel.messages.push(message);
+        else channel.messages[i] = message;
       }
     });
   }
