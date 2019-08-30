@@ -3,6 +3,7 @@ import { MessageService } from '../services/message.service';
 import { Channel } from '../models/channel';
 import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-channel',
@@ -13,7 +14,7 @@ import { UserService } from '../services/user.service';
 export class ChannelComponent {
   // tslint:disable-next-line:variable-name
   private _channel: Channel;
-  sub: Subscription;
+  sub: Subscription[];
 
   constructor(private messageService: MessageService, private userService: UserService) { }
 
@@ -24,9 +25,18 @@ export class ChannelComponent {
   @Input()
   set channel(c) {
     this._channel = c;
-    if (this._channel.id === undefined) { return; }
-    if (this.sub) { this.sub.unsubscribe(); }
+    if (this._channel.id === undefined) return;
+    if (this.sub) this.sub.forEach(s => s.unsubscribe());
     this.sub = this.messageService.subscribe(this._channel);
     this.messageService.updateMessages(this._channel);
+  }
+
+  edit(message: Message) {
+    message.body = prompt("Edit Message", message.body);
+    this.messageService.editMessage(message);
+  }
+
+  delete(message: Message) {
+    this.messageService.deleteMessage(message);
   }
 }

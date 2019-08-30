@@ -34,7 +34,8 @@ export class ChannelDrawerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.channels = this.channelService.channels;
+    this.channels = this.channelService.initChannels();
+    setTimeout(() => this.active = this.channels[0], 1000);
   }
 
   changeChannel(channel: Channel): void {
