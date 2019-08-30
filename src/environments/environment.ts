@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  httpUrl: 'http://localhost:8080',
-  wsUrl: 'ws://localhost:8080/ws'
+  httpUrl: 'http://10.200.200.33:8080',
+  wsUrl: 'ws://10.200.200.33:8080/ws'
 };
 
 /*
